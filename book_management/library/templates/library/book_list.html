@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Book List{% endblock %}
+
+{% block content %}
+    <h1>Book List</h1>
+    <div class="list-group">
+        {% for book in books %}
+            <a href="{% url 'book_detail' book.pk %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                <strong>{{ book.title }}</strong> by {{ book.author }}
+                <div class="btn-group" role="group">
+                    <a href="{% url 'book_edit' book.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{% url 'book_delete' book.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+            </a>
+        {% empty %}
+            <p>No books available.</p>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ book.title }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h4>{{ book.title }}</h4>
+            </div>
+            <div class="card-body">
+                <p><strong>Author:</strong> {{ book.author }}</p>
+                <p><strong>Published Date:</strong> {{ book.published_date }}</p>
+                <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+                <p><strong>Summary:</strong> {{ book.summary }}</p>
+            </div>
+            <div class="card-footer">
+                <a href="{% url 'book_edit' book.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{% url 'book_list' %}" class="btn btn-secondary btn-sm">Back to list</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
